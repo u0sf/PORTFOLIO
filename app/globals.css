@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1E3A8A;
+  --accent: #F97316;
+  --background-light: #FFFFFF;
+  --background-dark: #1F2937;
+}
+
+@layer base {
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors;
+  }
+  
+  .btn-accent {
+    @apply bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Font Classes */
+.font-arabic {
+  font-family: var(--font-cairo);
+}
+
+.font-english {
+  font-family: var(--font-inter);
+} 
