@@ -11,37 +11,41 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   return (
-    <main className="min-h-screen bg-gray-900">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="relative z-10">
         <Navigation />
         <section className="pt-32 pb-16 px-4">
-          <div className="container mx-auto">
-            <h1 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+          <div className="container">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-8"
+            >
               Projects
-            </h1>
+            </motion.h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
                 <motion.div
                   key={project.id}
                   whileHover={{ y: -5 }}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col"
+                  className="card flex flex-col"
                 >
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover rounded-t-xl"
                   />
                   <div className="p-6 flex flex-col flex-1">
                     <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{project.title}</h3>
+                      <h3 className="text-gray-900 dark:text-white">{project.title}</h3>
                       <span className="text-sm text-gray-500 dark:text-gray-400">{project.createdAt}</span>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">{project.description}</p>
+                    <p className="mb-4 flex-1">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tools.map((tool) => (
                         <span
                           key={tool}
-                          className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-md text-sm"
+                          className="badge-primary"
                         >
                           {tool}
                         </span>
@@ -80,11 +84,11 @@ export default function Projects() {
         >
           <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
           <div className="fixed inset-0 flex items-center justify-center p-4">
-            <Dialog.Panel className="mx-auto max-w-3xl rounded-lg bg-white dark:bg-gray-800 p-6">
+            <Dialog.Panel className="mx-auto max-w-3xl card">
               {selectedProject ? (
                 <>
                   <div className="flex justify-between items-start mb-4">
-                    <Dialog.Title className="text-2xl font-bold text-gray-900 dark:text-white">
+                    <Dialog.Title className="text-gray-900 dark:text-white">
                       {selectedProject.title}
                     </Dialog.Title>
                     <div className="flex items-center gap-4">
@@ -102,14 +106,14 @@ export default function Projects() {
                     alt={selectedProject.title}
                     className="w-full h-64 object-cover rounded-lg mb-6"
                   />
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  <p className="mb-6">
                     {selectedProject.fullDescription}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {selectedProject.tools.map((tool) => (
                       <span
                         key={tool}
-                        className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-md text-sm"
+                        className="badge-primary"
                       >
                         {tool}
                       </span>

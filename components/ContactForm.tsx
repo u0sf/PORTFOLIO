@@ -8,7 +8,6 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [selectedWork, setSelectedWork] = useState(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -44,11 +43,11 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-800 rounded-2xl p-8 shadow-xl">
+    <form onSubmit={handleSubmit} className="card">
       <div className="space-y-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-2">
-            Name <span className="text-red-500">*</span>
+          <label htmlFor="name" className="label">
+            Name <span className="text-error">*</span>
           </label>
           <input
             type="text"
@@ -57,14 +56,14 @@ export default function ContactForm() {
             value={form.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="input"
             placeholder="Your name"
           />
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-200 mb-2">
-            Phone Number <span className="text-red-500">*</span>
+          <label htmlFor="phone" className="label">
+            Phone Number <span className="text-error">*</span>
           </label>
           <input
             type="tel"
@@ -73,13 +72,13 @@ export default function ContactForm() {
             value={form.phone}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="input"
             placeholder="Your phone number"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
+          <label htmlFor="email" className="label">
             Email (optional)
           </label>
           <input
@@ -88,14 +87,14 @@ export default function ContactForm() {
             name="email"
             value={form.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="input"
             placeholder="Your email address"
           />
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-200 mb-2">
-            Message <span className="text-red-500">*</span>
+          <label htmlFor="message" className="label">
+            Message <span className="text-error">*</span>
           </label>
           <textarea
             id="message"
@@ -104,7 +103,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             rows={5}
-            className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+            className="input resize-none"
             placeholder="Your message"
           />
         </div>
@@ -112,20 +111,20 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 px-6 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-medium text-lg shadow-lg transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="btn-primary w-full py-3 text-lg"
         >
           <PaperAirplaneIcon className="h-5 w-5 -rotate-45" />
           {loading ? "Sending..." : "Send Message"}
         </button>
 
         {error && (
-          <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+          <div className="p-4 rounded-lg bg-error/10 border border-error/20 text-error text-sm">
             {error}
           </div>
         )}
 
         {success && (
-          <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-sm">
+          <div className="p-4 rounded-lg bg-success/10 border border-success/20 text-success text-sm">
             {success}
           </div>
         )}

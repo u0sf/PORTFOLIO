@@ -1,39 +1,42 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const subtitles = [
-  'Embedded Systems Enthusiast',
-  '3D Modeling Artist',
+interface AnimatedSubtitleProps {
+  titles?: string[]
+}
+
+const defaultTitles = [
   'Hardware Developer',
-  'Creative Thinker',
+  'Creative Coder',
+  '3D Artist',
+  'Tech Enthusiast',
 ]
 
-export default function AnimatedSubtitle() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+export default function AnimatedSubtitle({ titles = defaultTitles }: AnimatedSubtitleProps) {
+  const [index, setIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % subtitles.length)
-    }, 3000)
-
+      setIndex((prev) => (prev + 1) % titles.length)
+    }, 1800)
     return () => clearInterval(interval)
-  }, [])
+  }, [titles])
 
   return (
-    <div className="h-8 overflow-hidden">
+    <div className="h-8 md:h-10 flex items-center justify-center">
       <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -20, opacity: 0 }}
+        <motion.span
+          key={titles[index]}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.5 }}
-          className="text-lg text-gray-400"
+          className="block text-xl md:text-2xl font-semibold text-primary-600 dark:text-primary-400 text-center"
         >
-          {subtitles[currentIndex]}
-        </motion.div>
+          {titles[index]}
+        </motion.span>
       </AnimatePresence>
     </div>
   )

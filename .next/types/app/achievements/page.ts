@@ -1,4 +1,4 @@
-// File: D:\FPI\Cursor\app\achievements\page.tsx
+// File: D:\Cursor\app\achievements\page.tsx
 import * as entry from '../../../../app/achievements/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

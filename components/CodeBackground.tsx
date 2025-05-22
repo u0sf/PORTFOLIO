@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { useTheme } from 'next-themes'
 
 const codeSnippets = [
   // Development
@@ -28,6 +29,7 @@ const codeSnippets = [
 export default function CodeBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [scrollOpacity, setScrollOpacity] = useState(1)
+  const { theme } = useTheme()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -65,17 +67,17 @@ export default function CodeBackground() {
     }[] = []
 
     // Initialize particles
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 60; i++) {
       const type = ['dev', 'design', 'hardware', '3d'][Math.floor(Math.random() * 4)] as 'dev' | 'design' | 'hardware' | '3d'
       const text = codeSnippets[Math.floor(Math.random() * codeSnippets.length)]
-      const size = type === 'hardware' ? 12 : type === '3d' ? 14 : 13
+      const size = type === 'hardware' ? 14 : type === '3d' ? 15 : 14
 
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         text,
-        speed: 0.3 + Math.random() * 0.8,
-        opacity: 0.05 + Math.random() * 0.15,
+        speed: 0.22 + Math.random() * 0.55,
+        opacity: 0.09 + Math.random() * 0.15,
         type,
         size,
       })
@@ -83,28 +85,47 @@ export default function CodeBackground() {
 
     // Animation loop
     const animate = () => {
-      ctx.fillStyle = 'rgba(17, 24, 39, 0.05)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      // Set background color based on theme
+      const bgColor = theme === 'dark' ? 'rgba(17,24,39,0.7)' : 'rgba(249,250,251,0.7)';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.style.background = bgColor;
 
       particles.forEach((particle) => {
-        // Different colors for different types
+        // Different colors for different types based on theme
         let color
-        switch (particle.type) {
-          case 'dev':
-            color = 'rgba(156, 163, 175, ' // Gray
-            break
-          case 'design':
-            color = 'rgba(59, 130, 246, ' // Blue
-            break
-          case 'hardware':
-            color = 'rgba(34, 197, 94, ' // Green
-            break
-          case '3d':
-            color = 'rgba(168, 85, 247, ' // Purple
-            break
+        if (theme === 'dark') {
+          switch (particle.type) {
+            case 'dev':
+              color = 'rgba(156, 163, 175, ' // Gray
+              break
+            case 'design':
+              color = 'rgba(59, 130, 246, ' // Blue
+              break
+            case 'hardware':
+              color = 'rgba(34, 197, 94, ' // Green
+              break
+            case '3d':
+              color = 'rgba(168, 85, 247, ' // Purple
+              break
+          }
+        } else {
+          switch (particle.type) {
+            case 'dev':
+              color = 'rgba(75, 85, 99, ' // Darker gray
+              break
+            case 'design':
+              color = 'rgba(29, 78, 216, ' // Deeper blue
+              break
+            case 'hardware':
+              color = 'rgba(21, 128, 61, ' // Deeper green
+              break
+            case '3d':
+              color = 'rgba(107, 33, 168, ' // Deeper purple
+              break
+          }
         }
 
-        ctx.fillStyle = `${color}${particle.opacity * scrollOpacity})`
+        ctx.fillStyle = `${color}${Math.min(0.22, particle.opacity * scrollOpacity)})`
         ctx.font = `${particle.size}px monospace`
         ctx.fillText(particle.text, particle.x, particle.y)
 
@@ -126,7 +147,7 @@ export default function CodeBackground() {
       window.removeEventListener('resize', resizeCanvas)
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [theme]) // Add theme as a dependency
 
   return (
     <canvas

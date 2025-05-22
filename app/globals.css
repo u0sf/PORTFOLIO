@@ -3,15 +3,60 @@
 @tailwind utilities;
 
 :root {
-  --primary: #1E3A8A;
-  --accent: #F97316;
-  --background-light: #FFFFFF;
-  --background-dark: #1F2937;
+  /* Primary Colors */
+  --primary-50: #EFF6FF;
+  --primary-100: #DBEAFE;
+  --primary-200: #BFDBFE;
+  --primary-300: #93C5FD;
+  --primary-400: #60A5FA;
+  --primary-500: #3B82F6;
+  --primary-600: #2563EB;
+  --primary-700: #1D4ED8;
+  --primary-800: #1E40AF;
+  --primary-900: #1E3A8A;
+
+  /* Gray Colors */
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+  --gray-500: #6B7280;
+  --gray-600: #4B5563;
+  --gray-700: #374151;
+  --gray-800: #1F2937;
+  --gray-900: #111827;
+
+  /* Semantic Colors */
+  --success: #10B981;
+  --error: #EF4444;
+  --warning: #F59E0B;
+  --info: #3B82F6;
 }
 
 @layer base {
   body {
-    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl font-bold;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+
+  p {
+    @apply text-base md:text-lg text-gray-600 dark:text-gray-300;
   }
 }
 
@@ -20,12 +65,54 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
-  .btn-primary {
-    @apply bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors;
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2;
   }
   
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600;
+  }
+
   .btn-accent {
-    @apply bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors;
+    @apply btn bg-primary-500 text-white hover:bg-primary-600;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2;
+  }
+
+  .badge {
+    @apply px-2 py-1 rounded-md text-sm font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-100;
+  }
+
+  .badge-secondary {
+    @apply badge bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100;
+  }
+
+  /* Overlay/Blur for dark mode */
+  .overlay {
+    @apply bg-white/70 dark:bg-gray-900/80 backdrop-blur-md;
+  }
+
+  /* FAQ question font size tweak */
+  .faq-question {
+    @apply text-base md:text-lg font-semibold;
   }
 }
 

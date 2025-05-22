@@ -1,4 +1,4 @@
-// File: D:\FPI\Cursor\app\creative\page.tsx
+// File: D:\Cursor\app\creative\page.tsx
 import * as entry from '../../../../app/creative/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

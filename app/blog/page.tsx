@@ -5,24 +5,31 @@ import Navigation from '@/components/Navigation'
 
 export default function Blog() {
   return (
-    <main className="min-h-screen bg-gray-900">
-      <Navigation />
-      <section className="pt-32 pb-16 px-4">
-        <div className="container mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
-            Blog
-          </h1>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg text-center"
-          >
-            <p className="text-gray-600 dark:text-gray-300 text-lg italic">
-              No blog posts have been published yet. Check back soon for updates!
-            </p>
-          </motion.div>
-        </div>
-      </section>
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="relative z-10">
+        <Navigation />
+        <section className="pt-32 pb-16">
+          <div className="container">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-8"
+            >
+              Blog
+            </motion.h1>
+            <div className="flex flex-col items-center justify-center min-h-[200px]">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="text-xl text-gray-600 dark:text-gray-300 text-center"
+              >
+                No posts published yet. Coming soon!
+              </motion.p>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   )
 } 

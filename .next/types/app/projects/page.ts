@@ -1,4 +1,4 @@
-// File: D:\FPI\Cursor\app\projects\page.tsx
+// File: D:\Cursor\app\projects\page.tsx
 import * as entry from '../../../../app/projects/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
