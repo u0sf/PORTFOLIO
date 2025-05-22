@@ -49,7 +49,7 @@ export default function Home() {
           titles={[
             'Developer',
             'Hardware Developer',
-            '3D Modeler',
+            '3D Designer',
             'Designer',
           ]}
         />
