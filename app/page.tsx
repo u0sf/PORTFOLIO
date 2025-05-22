@@ -9,11 +9,21 @@ import ProjectSlider from '@/components/ProjectSlider'
 import { projects } from '@/data/projects'
 import Image from "next/image"
 
+interface SocialLink {
+  name: string;
+  url: string;
+  icon: JSX.Element;
+}
+
 const skills = [
   { name: 'Hardware', icon: '/icons/arduino.png' },
   { name: 'Blender', icon: '/icons/blender.png' },
   { name: 'Python', icon: '/icons/python.png' },
   { name: 'UI/UX', icon: '/icons/uiux.png' },
+]
+
+const socialLinks: SocialLink[] = [
+  // تم إزالة جميع الروابط
 ]
 
 export default function Home() {
@@ -138,6 +148,25 @@ export default function Home() {
                 <p className="text-gray-600 dark:text-gray-300 mb-2 flex-1">
                   {project.description}
                 </p>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Social Links Section */}
+      <section className="py-12 px-4 bg-white dark:bg-gray-900 relative z-10">
+        <div className="container">
+          <div className="flex justify-center space-x-6">
+            {socialLinks.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                className="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors"
+              >
+                {link.icon}
               </motion.a>
             ))}
           </div>
