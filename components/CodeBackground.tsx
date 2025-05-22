@@ -67,17 +67,17 @@ export default function CodeBackground() {
     }[] = []
 
     // Initialize particles
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 36; i++) {
       const type = ['dev', 'design', 'hardware', '3d'][Math.floor(Math.random() * 4)] as 'dev' | 'design' | 'hardware' | '3d'
       const text = codeSnippets[Math.floor(Math.random() * codeSnippets.length)]
-      const size = type === 'hardware' ? 14 : type === '3d' ? 15 : 14
+      const size = type === 'hardware' ? 12 : type === '3d' ? 13 : 12
 
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         text,
-        speed: 0.22 + Math.random() * 0.55,
-        opacity: 0.09 + Math.random() * 0.15,
+        speed: 0.18 + Math.random() * 0.45,
+        opacity: 0.06 + Math.random() * 0.13,
         type,
         size,
       })
@@ -125,7 +125,7 @@ export default function CodeBackground() {
           }
         }
 
-        ctx.fillStyle = `${color}${Math.min(0.22, particle.opacity * scrollOpacity)})`
+        ctx.fillStyle = `${color}${Math.min(0.18, particle.opacity * scrollOpacity)})`
         ctx.font = `${particle.size}px monospace`
         ctx.fillText(particle.text, particle.x, particle.y)
 
