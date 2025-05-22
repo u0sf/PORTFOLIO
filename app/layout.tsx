@@ -9,7 +9,6 @@ import ScrollProgress from '@/components/ScrollProgress'
 import BackToTop from '@/components/BackToTop'
 import CustomCursor from '@/components/CustomCursor'
 import SplashScreen from '@/components/SplashScreen'
-import VisitorCounter from '@/components/VisitorCounter'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -40,7 +39,6 @@ export default function RootLayout({
             {children}
           </div>
           <Footer />
-          <VisitorCounter />
           <BackToTop />
           <footer className="w-full py-6 flex justify-center items-center bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-auto">
             <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary-600 dark:text-primary-400 hover:underline">
