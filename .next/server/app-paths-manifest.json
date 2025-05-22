@@ -1,7 +1,12 @@
 {
+  "/_not-found": "app/_not-found.js",
+  "/api/contact/route": "app/api/contact/route.js",
+  "/creative/page": "app/creative/page.js",
   "/achievements/page": "app/achievements/page.js",
-  "/faq/page": "app/faq/page.js",
-  "/projects/page": "app/projects/page.js",
+  "/creative-work/page": "app/creative-work/page.js",
+  "/contact/page": "app/contact/page.js",
   "/blog/page": "app/blog/page.js",
-  "/creative/page": "app/creative/page.js"
+  "/faq/page": "app/faq/page.js",
+  "/page": "app/page.js",
+  "/projects/page": "app/projects/page.js"
 }

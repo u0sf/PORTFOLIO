@@ -7,6 +7,7 @@ import CodeBackground from '@/components/CodeBackground'
 import AnimatedSubtitle from '@/components/AnimatedSubtitle'
 import ProjectSlider from '@/components/ProjectSlider'
 import { projects } from '@/data/projects'
+import Image from "next/image"
 
 const skills = [
   { name: 'Hardware', icon: '/icons/arduino.png' },
@@ -88,7 +89,13 @@ export default function Home() {
                 whileHover={{ scale: 1.08 }}
                 className="card flex flex-col items-center py-6 px-2 shadow-md hover:shadow-xl transition"
               >
-                <img src={skill.icon} alt={skill.name} className="w-10 h-10 mb-2" />
+                <Image
+                  src={skill.icon}
+                  alt={skill.name}
+                  width={40}
+                  height={40}
+                  className="mb-2"
+                />
                 <span className="text-base font-semibold text-gray-900 dark:text-white text-center flex items-center gap-2">
                   {skill.name}
                 </span>
@@ -118,9 +125,11 @@ export default function Home() {
                 className="card flex flex-col cursor-pointer transition-shadow hover:shadow-2xl"
                 style={{ textDecoration: 'none' }}
               >
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={400}
+                  height={200}
                   className="w-full h-40 object-cover rounded-t-xl mb-4"
                 />
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
