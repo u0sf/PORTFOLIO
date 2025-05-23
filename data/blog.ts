@@ -14,7 +14,7 @@ export const posts: BlogPost[] = [
     id: 1,
     title: "How to Build Your First Project(Hardware)",
     slug: "how-to-build-your-first-project",
-    date: "2024-03-20",
+    date: "2025-05-23",
     excerpt: "In this blog, I'll walk you through the practical steps of building your first real project, based on my experience with one of the most valuable projects I've ever worked on: ViVision.",
     image: "/images/blog/vivision-cover.jpeg",
     tags: ["Projects", "Engineering", "Self-Learning"],
